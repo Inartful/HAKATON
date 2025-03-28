@@ -5,7 +5,7 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 def home():
-    return "Главная страница. <a href='/auth/login'>Войти</a>"
+    return render_template("index.html")  # Теперь рендерится HTML-шаблон
 
 @main.route("/profile")
 @login_required
