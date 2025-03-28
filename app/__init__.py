@@ -35,7 +35,10 @@ def create_app():
     # Импортируем блюпринты (модули маршрутов)
     from app.routes import main
     from app.auth import auth
+    from app.courses import courses  # Импортируем блюпринт курсов
+    
     app.register_blueprint(main)
     app.register_blueprint(auth, url_prefix="/auth")
+    app.register_blueprint(courses, url_prefix="")  # Доступен на `/courses`
 
     return app

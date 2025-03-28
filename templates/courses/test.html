@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ course.title }}</h1>
+<form method="post" action="{{ url_for('courses.submit_test', course_id=course.id) }}">
+    {% for q in course.questions %}
+    <p>{{ q.question }}</p>
+    {% for option in q.options %}
+    <input type="radio" name="{{ q.id }}" value="{{ loop.index0 }}"> {{ option }}<br>
+    {% endfor %}
+    {% endfor %}
+    <button type="submit">Отправить</button>
+</form>
+{% endblock %}
