@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренажер</title>
+</head>
+
+<body>
+    <h1 id="scene-text">{{ scene.text }}</h1>
+    <div id="choices">
+        {% for key, value in scene.choices.items() %}
+        <button onclick="makeChoice('{{ key }}')">{{ value }}</button>
+        {% endfor %}
+    </div>
+
+    <script>
+        function makeChoice(choice) {
+            fetch("/choose", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ choice: choice })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("scene-text").innerText = data.text;
+                    let choicesDiv = document.getElementById("choices");
+                    choicesDiv.innerHTML = "";
+                    for (let key in data.choices) {
+                        let btn = document.createElement("button");
+                        btn.innerText = data.choices[key];
+                        btn.onclick = () => makeChoice(key);
+                        choicesDiv.appendChild(btn);
+                    }
+                });
+        }
+    </script>
+</body>
+
+</html>
