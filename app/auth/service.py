@@ -1,4 +1,4 @@
-from app.auth.models import db, User
+from app.models import db, User
 from app import bcrypt
 
 def register_user(username, password):
