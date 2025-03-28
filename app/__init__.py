@@ -26,7 +26,7 @@ def create_app():
     login_manager.init_app(app)
 
     # Функция загрузки пользователя
-    from app.models import User  # Убедись, что путь правильный
+    from app.auth.models import User  # Убедись, что путь правильный
 
     @login_manager.user_loader
     def load_user(user_id):
