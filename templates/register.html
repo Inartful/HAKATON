@@ -23,7 +23,7 @@
         {% endfor %}
         {% endif %}
         {% endwith %}
-        <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+        <p>Уже есть аккаунт? <a href="{{ url_for('auth.login') }}">Войти</a></p>
         </form>
     </div>
 </body>
