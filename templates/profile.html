@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Подключаем CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}" />
+    <!-- Подключаем JS -->
+    <script src="{{ url_for('static', filename='js/profile.js') }}" defer></script>
+    <title>Профиль</title>
+</head>
+
+<body>
+    <div class="profile-container">
+        <img class="profile-img" src="profile.jpg" alt="Фото профиля" />
+        <h2>Имя Фамилия</h2>
+        <p>Email: example@email.com</p>
+        <p>Дата регистрации: 01.01.2025</p>
+        <button class="edit-btn">Редактировать профиль</button>
+    </div>
+</body>
+
+</html>
