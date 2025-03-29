@@ -3,12 +3,14 @@ from app.courses.service import get_courses, get_course_by_id, check_answers
 from app.courses import courses  # Импортируем блюпринт
 
 @courses.route("/courses")
+@login_required
 def course_list():
     """Показ списка курсов"""
     all_courses = get_courses()
     return render_template("courses/list.html", courses=all_courses)
 
 @courses.route("/courses/<int:course_id>")
+@login_required
 def course_detail(course_id):
     """Показ теста по курсу"""
     course = get_course_by_id(course_id)
@@ -18,6 +20,7 @@ def course_detail(course_id):
     return render_template("courses/test.html", course=course)
 
 @courses.route("/courses/<int:course_id>/submit", methods=["POST"])
+@login_required
 def submit_test(course_id):
     """Проверка ответов пользователя"""
     course = get_course_by_id(course_id)
