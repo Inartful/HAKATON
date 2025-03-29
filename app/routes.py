@@ -5,9 +5,10 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 def home():
-    return "Главная страница. <a href='/auth/login'>Войти</a>"
+    return render_template("index.html")
 
 @main.route("/profile")
 @login_required
 def profile():
-    return f"Привет, {current_user.username}! <a href='/auth/logout'>Выйти</a>"
+    # return f"Привет, {current_user.username}! <a href='/auth/logout'>Выйти</a>"
+    return render_template("profile.html")
